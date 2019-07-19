@@ -4,9 +4,13 @@ import React, { Component } from "react";
 //import store from "./store/configureStore";
 import SearchRecipesComponent from "./components/SearchRecipesComponent";
 import ListDropdownComponent from "./components/ListDropdownComponent";
+import FilterRecipesComponent from "./components/FilterRecipesComponent";
+
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
+
 import "./App.css";
 
 class App extends Component {
@@ -22,24 +26,12 @@ class App extends Component {
             <SearchRecipesComponent />
           </Col>
         </Row>
-        <p>TEST</p>
-        <p>TEST</p>
-        <p>TEST</p>
-        <p>TEST</p>
-        <p>TEST</p>
-        <p>TEST</p>
-
-        <p>TEST</p>
-        <p>TEST</p>
-        <p>TEST</p>
-
-        <p>TEST</p>
-        <p>TEST</p>
-        <p>TEST</p>
-
-        <p>TEST</p>
+        <Row className="justify-content-md-center">
+          {/* <Col sm={12}> */}
+          <FilterRecipesComponent />
+          {/* </Col> */}
+        </Row>
       </Container>
-
       // </Provider>
     );
   }
