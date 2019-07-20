@@ -1,24 +1,24 @@
 import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
 import FormControl from "react-bootstrap/FormControl";
-import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+
 class SearchRecipesComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
       recipe: ""
     };
-    this.handleChangeSearchRecipes = this.handleChangeSearchRecipes.bind(this);
-    this.onAddDocument = this.onAddDocument.bind(this);
+    this.handleChangeSearchRecipe = this.handleChangeSearchRecipe.bind(this);
+    this.onSearchRecipe = this.onSearchRecipe.bind(this);
   }
 
-  handleChangeSearchRecipes(event) {
+  handleChangeSearchRecipe(event) {
     this.setState({ recipe: event.target.value });
   }
 
-  onAddDocument() {
+  onSearchRecipe() {
     this.setState({ recipe: "" });
   }
 
@@ -26,10 +26,10 @@ class SearchRecipesComponent extends Component {
     return (
       <Row>
         <Col sm={8}>
-          <FormControl type="text" placeholder="Search Recipe..." value={this.state.recipe} onChange={this.handleChangeSearchRecipes} />
+          <FormControl type="text" placeholder="Search Recipe..." value={this.state.recipe} onChange={this.handleChangeSearchRecipe} />
         </Col>
         <Col sm={4}>
-          <Button variant="success" size="lg" block onClick={this.onAddDocument}>
+          <Button className="button-search" variant="success" size="lg" block onClick={this.onSearchRecipe}>
             Search
           </Button>
         </Col>
