@@ -9,7 +9,7 @@ class FilterItemRecipesComponent extends Component {
   render() {
     return (
       <Button variant="outline-danger filter__button">
-        <strong>Hello geeks!</strong>
+        <strong>Filter Name </strong>
         <span aria-hidden="true"> ×</span>
       </Button>
     );
