@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { addFiltersRecipes } from "../actions/recipesActions";
 import Button from "react-bootstrap/Button";
 import FormControl from "react-bootstrap/FormControl";
 import Row from "react-bootstrap/Row";
@@ -8,7 +11,8 @@ class SearchRecipesComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      recipe: ""
+      recipe: "",
+      filtersRecipes: []
     };
     this.handleChangeSearchRecipe = this.handleChangeSearchRecipe.bind(this);
     this.onSearchRecipe = this.onSearchRecipe.bind(this);
@@ -19,6 +23,8 @@ class SearchRecipesComponent extends Component {
   }
 
   onSearchRecipe() {
+    if (this.state.recipe.length === 0) return;
+    this.props.addFiltersRecipes(this.state.recipe, this.state.filtersRecipes);
     this.setState({ recipe: "" });
   }
 
@@ -37,4 +43,17 @@ class SearchRecipesComponent extends Component {
     );
   }
 }
-export default SearchRecipesComponent;
+
+SearchRecipesComponent.propTypes = {
+  addFiltersRecipes: PropTypes.func.isRequired,
+  filtersRecipes: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  filtersRecipes: state.filtersRecipes
+});
+
+export default connect(
+  mapStateToProps,
+  { addFiltersRecipes }
+)(SearchRecipesComponent);
