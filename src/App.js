@@ -27,9 +27,7 @@ class App extends Component {
             </Col>
           </Row>
           <Row className="justify-content-md-center">
-            {/* <Col sm={12}> */}
             <FilterRecipesComponent />
-            {/* </Col> */}
           </Row>
           <Row className="justify-content-md-center">
             <Col sm="auto">
