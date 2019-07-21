@@ -12,7 +12,7 @@ export const getRecipes = () => dispatch => {
   //   .catch(err => {
   //     dispatch(receiveErrorRecipes(err));
   //   });
-  var allRecipes = [
+  let allRecipes = [
     {
       title: "Ginger Champagne",
       href: "http://allrecipes.com/Recipe/Ginger-Champagne/Detail.aspx",
@@ -74,8 +74,14 @@ export const getRecipes = () => dispatch => {
       thumbnail: "http://img.recipepuppy.com/10.jpg"
     }
   ];
-  console.log("allRecipes", allRecipes);
-  dispatch(receiveRecipes(allRecipes));
+  const temp = allRecipes
+    .map(recipe => {
+      return recipe.ingredients;
+    })
+    .join(", ")
+    .split(", ");
+  let ingredientsList = [...new Set(temp)];
+  dispatch(receiveRecipes(allRecipes, ingredientsList));
 };
 
 export const requestRecipes = () => {
@@ -84,10 +90,11 @@ export const requestRecipes = () => {
   };
 };
 
-export const receiveRecipes = recipes => {
+export const receiveRecipes = (recipes, ingredientsList) => {
   return {
     type: RECEIVE_RECIPES,
-    payload: recipes
+    payload: recipes,
+    ingredientsList: ingredientsList
   };
 };
 

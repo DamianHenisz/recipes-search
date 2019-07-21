@@ -20,7 +20,8 @@ export default function(state = initialState, action) {
         ...state,
         isLoadingRecipes: false,
         recipes: action.payload,
-        searchingRecipes: action.payload
+        searchingRecipes: action.payload,
+        ingredients: action.ingredientsList
       };
     case RECEIVE_ERROR_RECIPES:
       return {
