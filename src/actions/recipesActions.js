@@ -1,8 +1,7 @@
 import axios from "axios";
 
-import { REQUEST_RECIPES, RECEIVE_RECIPES, RECEIVE_ERROR_RECIPES, SET_FILTERS_RECIPES } from "./types";
+import { REQUEST_RECIPES, RECEIVE_RECIPES, RECEIVE_ERROR_RECIPES, SET_FILTERS_RECIPES, UDPATE_RECIPES } from "./types";
 
-//Register User
 export const getRecipes = () => dispatch => {
   dispatch(requestRecipes());
   // axios
@@ -99,17 +98,47 @@ export const receiveErrorRecipes = error => {
   };
 };
 
-export const addFiltersRecipes = (recipes, filtersRecipes) => dispatch => {
-  console.log("recipes", recipes);
-  filtersRecipes.push(recipes);
-  console.log("filtersRecipes", filtersRecipes);
+export const addFiltersRecipes = (recipe, filtersRecipes) => dispatch => {
+  filtersRecipes.push(recipe);
   dispatch(setFiltersRecipes(filtersRecipes));
-  //Dispatch na update
+};
+
+export const removeFiltersRecipes = (recipe, filtersRecipes) => dispatch => {
+  filtersRecipes.splice(filtersRecipes.indexOf(recipe), 1);
+  dispatch(setFiltersRecipes(filtersRecipes));
 };
 
 export const setFiltersRecipes = filtersRecipes => {
   return {
     type: SET_FILTERS_RECIPES,
     payload: filtersRecipes
+  };
+};
+
+export const udpateRecipes = (filtersRecipes, searchingRecipes, allRecipes) => dispatch => {
+  let searchingFilterRecipes = [];
+  if (filtersRecipes.length === 0) {
+    searchingFilterRecipes = allRecipes;
+  } else if (filtersRecipes.length) {
+    filtersRecipes.forEach(ingredient => {
+      const found = searchingRecipes ? searchingRecipes.filter(el => el.ingredients.includes(ingredient)) : [];
+      console.log(found);
+      if (found !== undefined) {
+        searchingFilterRecipes = typeof found.length === undefined ? [found] : found;
+      } else {
+        searchingFilterRecipes = [];
+      }
+    });
+  } else {
+    searchingFilterRecipes = allRecipes;
+  }
+
+  dispatch(setudpateRecipes(searchingFilterRecipes));
+};
+
+export const setudpateRecipes = searchingRecipes => {
+  return {
+    type: UDPATE_RECIPES,
+    payload: searchingRecipes
   };
 };
