@@ -4,10 +4,6 @@ import PropTypes from "prop-types";
 import FilterItemRecipesComponent from "./FilterItemRecipesComponent";
 
 class FilterRecipesComponent extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const { filtersRecipes } = this.props.filtersRecipes;
     console.log("filtersRecipes", filtersRecipes);

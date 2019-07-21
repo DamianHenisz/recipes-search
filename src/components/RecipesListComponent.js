@@ -6,10 +6,6 @@ import { getRecipes } from "../actions/recipesActions";
 import RecipesItemComponent from "./RecipesItemComponent";
 
 class RecipesListComponent extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
     this.props.getRecipes();
   }
