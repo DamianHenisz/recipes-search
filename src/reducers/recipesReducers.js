@@ -1,10 +1,11 @@
-import { REQUEST_RECIPES, RECEIVE_RECIPES, RECEIVE_ERROR_RECIPES, SET_FILTERS_RECIPES } from "../actions/types";
+import { REQUEST_RECIPES, RECEIVE_RECIPES, RECEIVE_ERROR_RECIPES, SET_FILTERS_RECIPES, UDPATE_RECIPES } from "../actions/types";
 
 const initialState = {
   isLoadingRecipes: false,
   recipes: [],
   ingredients: [],
-  filtersRecipes: []
+  filtersRecipes: [],
+  searchingRecipes: []
 };
 
 export default function(state = initialState, action) {
@@ -18,7 +19,8 @@ export default function(state = initialState, action) {
       return {
         ...state,
         isLoadingRecipes: false,
-        recipes: action.payload
+        recipes: action.payload,
+        searchingRecipes: action.payload
       };
     case RECEIVE_ERROR_RECIPES:
       return {
@@ -30,6 +32,11 @@ export default function(state = initialState, action) {
       return {
         ...state,
         filtersRecipes: action.payload
+      };
+    case UDPATE_RECIPES:
+      return {
+        ...state,
+        searchingRecipes: action.payload
       };
     default:
       return state;
