@@ -15,19 +15,19 @@ class RecipesListComponent extends Component {
   }
 
   render() {
-    const { recipes } = this.props.recipes;
-    console.log(recipes);
-    return recipes.map((object, index) => <RecipesItemComponent key={index} {...object} />);
+    const { searchingRecipes } = this.props.searchingRecipes;
+    console.log("object", searchingRecipes);
+    return searchingRecipes.map((object, index) => <RecipesItemComponent key={index} {...object} />);
   }
 }
 
 RecipesListComponent.propTypes = {
   getRecipes: PropTypes.func.isRequired,
-  recipes: PropTypes.object.isRequired
+  searchingRecipes: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-  recipes: state.recipes
+  searchingRecipes: state.recipes
 });
 
 export default connect(
