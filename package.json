@@ -20,6 +20,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "proxy": "http://www.recipepuppy.com/",
   "eslintConfig": {
     "extends": "react-app"
   },
