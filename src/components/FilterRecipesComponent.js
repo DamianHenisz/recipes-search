@@ -6,7 +6,6 @@ import FilterItemRecipesComponent from "./FilterItemRecipesComponent";
 class FilterRecipesComponent extends Component {
   render() {
     const { filtersRecipes } = this.props.filtersRecipes;
-    console.log("filtersRecipes", filtersRecipes);
     return filtersRecipes.map((filterName, index) => <FilterItemRecipesComponent key={index} filterName={filterName} />);
   }
 }

@@ -12,7 +12,6 @@ class RecipesListComponent extends Component {
 
   render() {
     const { searchingRecipes } = this.props.searchingRecipes;
-    console.log("object", searchingRecipes);
     return searchingRecipes.map((object, index) => <RecipesItemComponent key={index} {...object} />);
   }
 }

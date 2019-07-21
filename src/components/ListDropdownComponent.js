@@ -28,7 +28,7 @@ class ListDropdownComponent extends Component {
 
 ListDropdownComponent.propTypes = {
   addFiltersRecipes: PropTypes.func.isRequired,
-  ingredients: PropTypes.array.isRequired,
+  ingredients: PropTypes.object.isRequired,
   filtersRecipes: PropTypes.array.isRequired,
   searchingRecipes: PropTypes.array.isRequired
 };
