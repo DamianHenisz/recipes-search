@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
+
 class RecipesItemComponent extends Component {
   constructor(props) {
     super(props);
@@ -20,12 +19,4 @@ class RecipesItemComponent extends Component {
   }
 }
 
-RecipesItemComponent.propTypes = {
-  recipes: PropTypes.object.isRequired
-};
-
-const mapStateToProps = state => ({
-  recipes: state.recipes
-});
-
-export default connect(mapStateToProps)(RecipesItemComponent);
+export default RecipesItemComponent;
