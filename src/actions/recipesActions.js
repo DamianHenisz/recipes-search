@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { REQUEST_RECIPES, RECEIVE_RECIPES, RECEIVE_ERROR_RECIPES } from "./types";
+import { REQUEST_RECIPES, RECEIVE_RECIPES, RECEIVE_ERROR_RECIPES, SET_FILTERS_RECIPES } from "./types";
 
 //Register User
 export const getRecipes = () => dispatch => {
@@ -96,5 +96,20 @@ export const receiveErrorRecipes = error => {
   return {
     type: RECEIVE_ERROR_RECIPES,
     payload: error
+  };
+};
+
+export const addFiltersRecipes = (recipes, filtersRecipes) => dispatch => {
+  console.log("recipes", recipes);
+  filtersRecipes.push(recipes);
+  console.log("filtersRecipes", filtersRecipes);
+  dispatch(setFiltersRecipes(filtersRecipes));
+  //Dispatch na update
+};
+
+export const setFiltersRecipes = filtersRecipes => {
+  return {
+    type: SET_FILTERS_RECIPES,
+    payload: filtersRecipes
   };
 };
