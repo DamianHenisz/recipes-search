@@ -30,7 +30,7 @@ class SearchRecipesComponent extends Component {
 
   render() {
     return (
-      <Row>
+      <Row className="searchRecipesComponent__row">
         <Col sm={8}>
           <FormControl type="text" placeholder="Search Recipe..." value={this.state.recipe} onChange={this.handleChangeSearchRecipe} />
         </Col>
