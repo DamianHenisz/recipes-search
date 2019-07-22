@@ -11,7 +11,8 @@ class SearchRecipesComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      recipe: ""
+      recipe: "",
+      isAdded: true
     };
     this.handleChangeSearchRecipe = this.handleChangeSearchRecipe.bind(this);
     this.onSearchRecipe = this.onSearchRecipe.bind(this);
@@ -25,7 +26,7 @@ class SearchRecipesComponent extends Component {
     if (this.state.recipe.length === 0) return;
     this.props.addFiltersRecipes(this.state.recipe, this.props.filtersRecipes, this.props.searchingRecipes);
     this.setState({ recipe: "" });
-    this.props.udpateRecipes(this.props.filtersRecipes, this.props.searchingRecipes, this.props.recipes);
+    this.props.udpateRecipes(this.props.filtersRecipes, this.props.searchingRecipes, this.props.recipes, this.state.isAdded);
   }
 
   render() {

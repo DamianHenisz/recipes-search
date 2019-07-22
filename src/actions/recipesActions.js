@@ -60,14 +60,14 @@ export const setFiltersRecipes = filtersRecipes => {
   };
 };
 
-export const udpateRecipes = (filtersRecipes, searchingRecipes, allRecipes) => dispatch => {
+export const udpateRecipes = (filtersRecipes, searchingRecipes, allRecipes, isAdded) => dispatch => {
   let searchingFilterRecipes = [];
+  const recipesList = isAdded ? searchingRecipes : allRecipes;
   if (filtersRecipes.length === 0) {
     searchingFilterRecipes = allRecipes;
   } else if (filtersRecipes.length) {
     filtersRecipes.forEach(ingredient => {
-      const found = searchingRecipes ? searchingRecipes.filter(el => el.ingredients.includes(ingredient)) : [];
-      console.log(found);
+      const found = recipesList ? recipesList.filter(el => el.ingredients.includes(ingredient)) : [];
       if (found !== undefined) {
         searchingFilterRecipes = typeof found.length === undefined ? [found] : found;
       } else {

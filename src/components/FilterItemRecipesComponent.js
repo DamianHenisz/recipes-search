@@ -7,11 +7,14 @@ import Button from "react-bootstrap/Button";
 class FilterItemRecipesComponent extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      isAdded: false
+    };
     this.onDeleteFilterRecipe = this.onDeleteFilterRecipe.bind(this);
   }
   onDeleteFilterRecipe() {
     this.props.removeFiltersRecipes(this.props.filterName, this.props.filtersRecipes, this.props.searchingRecipes);
-    this.props.udpateRecipes(this.props.filtersRecipes, this.props.searchingRecipes, this.props.recipes);
+    this.props.udpateRecipes(this.props.filtersRecipes, this.props.searchingRecipes, this.props.recipes, this.state.isAdded);
   }
   render() {
     return (
