@@ -7,12 +7,15 @@ import Form from "react-bootstrap/Form";
 class ListDropdownComponent extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      isAdded: true
+    };
     this.onSearchRecipe = this.onSearchRecipe.bind(this);
   }
 
   onSearchRecipe(recipe) {
     this.props.addFiltersRecipes(recipe, this.props.filtersRecipes, this.props.searchingRecipes);
-    this.props.udpateRecipes(this.props.filtersRecipes, this.props.searchingRecipes, this.props.recipes);
+    this.props.udpateRecipes(this.props.filtersRecipes, this.props.searchingRecipes, this.props.recipes, this.state.isAdded);
   }
   render() {
     const { ingredients } = this.props.ingredients;

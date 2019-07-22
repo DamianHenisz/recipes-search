@@ -4,7 +4,7 @@ import "../App.css";
 class RecipesItemComponent extends Component {
   render() {
     return (
-      <div className="recipesListComponent__row">
+      <div className="recipesItemComponent__row">
         <Media>
           <img width={200} height={200} className="align-self-center mr-3" src={this.props.thumbnail} alt="img" />
           <Media.Body>
